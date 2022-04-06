@@ -1,4 +1,15 @@
-# WfarApp
+# Web-Based Weekly Faculty Accomplishments Report (WFAR) Management System
+
+Create a system that will allow a faculty to submit their Weekly Faculty Accomplishment Report (WFAR).
+
+The Area Chair or Department Head can then view, give a comment, create a report, filter, search, and print the submitted WFAR by the faculty assigned to them.
+
+Admin can access all the features and see all the WFAR submissions. Aside from that, the admin can assign faculty to be checked by Area Chair or Department Head. Admin can promote/demote a faculty member to an Area Chair or Department Head. Admin can create a new Semester (new semester means new batch of WFAR).
+
+**Information needed for a WFAR:**
+
+- Date of Class/Accomplishment
+- Subject Being Taught
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.1.
 
