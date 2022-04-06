@@ -10,29 +10,47 @@ Admin can access all the features and see all the WFAR submissions. Aside from t
 
 - Date of Class/Accomplishment
 - Subject Being Taught
+- Course, Years and Section
+- No. of Attendees
+- Link of MS Teams Recordings
+- Learning Activities
+- Attachments
+    - Team Meet Screenshot/s
+    - Provided Activity Screenshot/s
 
+Sample WFAR:
+[Week 1 - Galang, Gabriel M Sample.docx](https://bulsumain-my.sharepoint.com/:w:/g/personal/gabriel_galang_bulsumain_onmicrosoft_com/EbJl_LeZVQpDoWbznpziUwQBsXjdVlHMdFJ-mTcxmKRL1Q?rtime=56_1Q5oX2kg)
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.1.
 
-## Development server
+Information needed for WFAR report:
+- Faculty Name
+- Remarks
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Sample WFAR report:
+[WFAR Report Sample.xlsx](https://bulsumain-my.sharepoint.com/:x:/g/personal/gabriel_galang_bulsumain_onmicrosoft_com/EWM_dORvgYJJmlGWA7SMtx0BhX2mPeA1yftQ9G_bDsSptg?e=iWijtu)
 
-## Code scaffolding
+User Levels:
+**Admin**
+- Promotes/Demotes Faculty Account to Area Chair/Department Head.
+- View the submission of the Faculty/Area Chair/Department Head.
+- Can generate report.
+- Can assign faculty on specific Area Chair/Department Head.
+- Can create a new semester.
+**Area Chair/Department Head**
+- View the submission of the Faculty/Area Chair/Department Head.
+- Can generate reports of the WFAR of the faculty under them.
+- Uploads WFAR.
+**Faculty**
+- Uploads WFAR.
+- Can only see their submissions.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Report Needed:
+- Summary of faculty who completed the requirements (Can be filtered by weeks, status).
+- WFAR submitted by a faculty member.
 
-## Build
+Uploads:
+- Must be able to upload multiple images that will serve as attachments per meeting.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Registration:
+- Faculty should register on registration page. Must be accepted by Area Chair/Department Head/Admin.
+- Area Chair/Department are normal Faculty Accounts who were promoted by the admin account.
