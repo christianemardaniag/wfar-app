@@ -1,1 +1,26 @@
-<p>login-page works!</p>
+<div class="container text-center">
+    <div class="form-signin">
+        <form>
+            <!-- <img class="mb-4" src="../img/logo.png" alt="" width="72" height="72"> -->
+            <h1 class="h3 mb-3 fw-normal">Login</h1>
+
+            <div class="form-floating">
+                <input type="text" class="form-control" id="username" placeholder="name@example.com">
+                <label for="floatingInput">Username / Email</label>
+            </div>
+            <div class="form-floating my-3">
+                <input type="password" class="form-control" id="password" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+                <button class="w-100 btn btn-sm btn-link text-decoration-none" type="button" id="forgot-password"
+                    data-bs-toggle="modal" data-bs-target="#forgot-password-modal">Forgot Password</button>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="button" id="sign-in">Sign in</button>
+            <div class="alert alert-danger fade show" role="alert">
+                <strong>Invalid Username or Password</strong>
+                <div><span id='attempt'>0</span> Remaining attempts</div>
+            </div>
+            <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
+        </form>
+    </div>
+
+</div>
