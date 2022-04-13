@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'wfar-app';
+  userLoggedIn = false;
+
+  submitForm() {
+    console.log("Login");
+    this.userLoggedIn = !this.userLoggedIn;
+  }
 }
