@@ -1,0 +1,120 @@
+Terms
+- Services
+- List
+- Edit
+- Item
+- Server
+- Home
+
+
+
+
+## Create component
+ng g c componentName --skipTests true
+
+
+
+
+## Create Services
+> create serviceName.service.ts
+export class ServiceClassName {
+    functionName(variableParameter: datatype) {
+        
+    }
+}
+
+> on componentName.component.ts
+constructor(private nameService: ServiceClassName) {}
+
+> @Component on componentName.component.ts
+providers: [ServiceClassName]
+
+> import
+import { ServiceClassName } from '../serviceName.service';
+
+> access service
+this.nameService.functionName(valueParameter);
+
+
+## Use router in button (Navigate Programmatically)
+constructor(private router: Router) {}
+
+> function
+clickButtonFunction() {
+    this.router.navigate(['/routeLink']);
+}
+
+> routerLink using properties
+<a [routerLink]="['/users', 10, 'Anna']">Load Anna id 10</a>
+
+
+## Passing Parameter to Routes
+> on app-routing.modules
+{ path: "routerPath/:id/:name', component: ComponentName }
+
+## Fetching Route Parameter
+> on child component (Ex. UsersComponent/userComponent)
+> use snapshot if first loads
+> use params to update always (import Params from angular/router)
+> when using subscribe make sure to destroy after use
+
+export class USerComponent implements OnInit, OnDestroy {
+    user: { id: number, name: string };
+    paramsSubscription: Subscription;
+
+    constructor(private route: ActivatedRoute) {}
+    ngOnInit() {
+        this.user = {
+            id: this.route.snapshot.params['id'], // id from path (routerPath:id)
+            name: this.route.snapshot.params['name'], // id from path (routerPath:id/:name)
+        }
+
+        this paramsSubscription = this.route.params
+            .subscribe(
+                (params: Params) => {
+                    this.user.id = params['id'];
+                    this.user.name = params['name'];
+                }
+            );
+    }
+    ngOnDestroy() {
+        this.paramsSubscription.unsubscribe();
+    }
+}
+
+> on html
+<p>User ID is {{ user.id }}</p>
+<p>User Name is {{ user.name }}</p>
+
+
+
+## Passing Query Parameter and Fragments
+> localhost:400/users/10/Anna?mode=editing#loading
+<a [routerLink]="['/servers', 5, 'edit']" 
+[queryParams]="{allowEdit: '1'}"
+[fragment]="loading"
+</a>
+
+clickButtonFunction(id: number) {
+    this.router.navigate(['/routeLink', id, 'edit'], {queryParams: {allowEdit: '1'}, fragment: 'loading'});
+}
+
+
+## Retrieve Parameter and Fragments
+console.log(this.route.snapshot.queryParams);
+console.log(this.route.snapshot.fragment);
+
+console.log(this.route.queryParams.subscribe())
+console.log(this.route.fragment.subscribe())
+
+
+
+## Setting up Child (Nested) Routes
+> app-routing.module.ts
+{ path: 'servers', component: ServersComponent, children: [
+    { path: ':id', component: ServersComponent },
+    { path: ':id/edit', component: EditServerComponent }
+]}
+
+> load child route
+<router-outlet></router-outlet>
