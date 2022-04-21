@@ -5,12 +5,14 @@ Terms
 - Item
 - Server
 - Home
-
+- shared
+- fetch
+- post
 
 
 
 ## Create component
-ng g c componentName --skipTests true
+ng g c componentName --skip-tests true
 
 
 
@@ -118,3 +120,14 @@ console.log(this.route.fragment.subscribe())
 
 > load child route
 <router-outlet></router-outlet>
+
+
+
+## Protecting Routes with canActivate
+> create auth-guard.service.ts
+ng g s auth-guard
+
+> create guard
+ng g guard auth
+
+

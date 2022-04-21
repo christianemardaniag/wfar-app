@@ -54,6 +54,10 @@ Registration:
 - Faculty should register on registration page. Must be accepted by Area Chair/Department Head/Admin.
 - Area Chair/Department are normal Faculty Accounts who were promoted by the admin account.
 
+Dashboard
+- Percentage report
+- Activities
+
 
 **Layout.** Layout must be consistent throughout the whole program/system, easy to navigate, with proper alert and prompt messages.
 

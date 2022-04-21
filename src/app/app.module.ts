@@ -7,7 +7,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AcademicComponent } from './academic/academic.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     LoginComponent,
     DashboardComponent,
     AcademicComponent,
-    SidebarComponent
+    AdminLoginComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
