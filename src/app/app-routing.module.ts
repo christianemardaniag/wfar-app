@@ -7,6 +7,7 @@ import { DepartmentHeadComponent } from './department-head/department-head.compo
 import { FacultyComponent } from './faculty/faculty.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
+import { RegistrationComponent } from './registration/registration.component';
 import { ReportComponent } from './report/report.component';
 import { SettingComponent } from './setting/setting.component';
 
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'wfar-admin', component: AdminLoginComponent },
   { path: 'setting', component: SettingComponent },
+  { path: 'registration', component: RegistrationComponent },
   { path: 'main', component: MainComponent, 
     children: [
       { path: 'dashboard', component: DashboardComponent },

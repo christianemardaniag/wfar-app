@@ -13,6 +13,8 @@ import { FacultyComponent } from './faculty/faculty.component';
 import { DepartmentHeadComponent } from './department-head/department-head.component';
 import { ReportComponent } from './report/report.component';
 import { SettingComponent } from './setting/setting.component';
+import { HttpClientModule } from '@angular/common/http';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -25,11 +27,13 @@ import { SettingComponent } from './setting/setting.component';
     FacultyComponent,
     DepartmentHeadComponent,
     ReportComponent,
-    SettingComponent
+    SettingComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule
   ],
   providers: [],

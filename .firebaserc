@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "wfar-management-system"
+  },
+  "targets": {
+    "wfar-management-system": {
+      "hosting": {
+        "wfar-app": [
+          "wfar-management-system"
+        ]
+      }
+    }
   }
 }

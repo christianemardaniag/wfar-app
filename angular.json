@@ -102,9 +102,31 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "wfar-app:build:production",
+            "firebaseProject": "wfar-management-system",
+            "firebaseHostingSite": "wfar-management-system"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "wfar-app"
+  "defaultProject": "wfar-app",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
