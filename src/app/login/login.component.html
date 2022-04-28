@@ -8,30 +8,33 @@
                 <h1 class="h3 fw-normal mb-0">WFAR Management System</h1>
                 <small class="fw-bolder">Faculty | Department Head</small>
             </div>
-            <div class="form-floating">
-                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" ngModel
-                    required email>
-                <label for="email">Email address</label>
-            </div>
-            <div class="form-floating">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password" ngModel
-                    required>
-                <label for="password">Password</label>
-            </div>
-            <div class="alert alert-danger my-2" *ngIf="isIncorrect" role="alert">
-                Incorrect Email or Password!
-            </div>
-            <button class="btn btn-link text-decoration-none mb-3" data-bs-toggle="modal"
-                data-bs-target="#forgot-password-modal" type="button">
-                Forget Password
-            </button>
-
-            <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="!f.valid">
-                <span *ngIf="!onSigninSpinner">Log in</span>
-                <div class="spinner-border spinner-border-sm" role="status" *ngIf="onSigninSpinner">
-                    <span class="visually-hidden">Loading...</span>
+            <hr>
+            <div class="input-groups">
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"
+                        ngModel required email>
+                    <label for="email">Email address</label>
                 </div>
-            </button>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                        ngModel required>
+                    <label for="password">Password</label>
+                </div>
+                <div class="alert alert-danger my-2" *ngIf="isIncorrect" role="alert">
+                    Incorrect Email or Password!
+                </div>
+                <button class="btn btn-link text-decoration-none mb-3" data-bs-toggle="modal"
+                    data-bs-target="#forgot-password-modal" type="button">
+                    Forget Password
+                </button>
+
+                <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="!f.valid">
+                    <span *ngIf="!onSigninSpinner">Log in</span>
+                    <div class="spinner-border spinner-border-sm" role="status" *ngIf="onSigninSpinner">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </button>
+            </div>
         </form>
         <a class="btn btn-link text-decoration-none" routerLink="/registration">Register</a>
         <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
@@ -55,9 +58,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="send-code" (click)="sendNewPass(fpForm)" [disabled]="!fpForm.valid"><span
-                        class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
-                        id="send-spinner"></span> Send New Password</button>
+                <button type="button" class="btn btn-primary" id="send-code" (click)="sendNewPass(fpForm)"
+                    [disabled]="!fpForm.valid"><span class="spinner-border spinner-border-sm" role="status"
+                        aria-hidden="true" id="send-spinner"></span> Send New Password</button>
             </div>
         </div>
     </div>

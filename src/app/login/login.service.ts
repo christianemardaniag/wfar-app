@@ -10,7 +10,6 @@ import { User } from '../model/user';
 export class LoginService {
 
   private baseUrl = "https://wfar-management-system-default-rtdb.firebaseio.com";
-  user = { email: '', username: '', password: ''};
   constructor(private http: HttpClient) { }
 
   getAllUsers() {

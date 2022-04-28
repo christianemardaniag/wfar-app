@@ -4,16 +4,12 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 
-import { User } from '../model/user';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  user: User[] = [];
   onSigninSpinner = false;
   isLoggedIn = false;
   isIncorrect = false;
@@ -30,15 +26,18 @@ export class LoginComponent implements OnInit {
 
     this.loginService.getAllUsers()
       .subscribe(data => {
-        this.user = data;
-        this.onSigninSpinner = false;
-        for (const x of this.user) {
-          if (email == x.email && password == x.password) {
-            this.isLoggedIn = true;
-            this.router.navigate(['/main/dashboard']);
+        console.log("LOGGING IN: EMAIL[" + email + "]");
+        for (const key in data) {
+          if (data.hasOwnProperty(key)) {
+            const element = data[key];
+            if (email == element.email && password == element.password) {
+              this.isLoggedIn = true;
+              this.router.navigate(['/main/dashboard']);
+            }
           }
         }
-        if(!this.isLoggedIn) {
+        this.onSigninSpinner = false;
+        if (!this.isLoggedIn) {
           this.isIncorrect = true;
         }
       });

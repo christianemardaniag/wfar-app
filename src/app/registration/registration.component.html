@@ -1,1 +1,78 @@
-<p>registration works!</p>
+<main class="register-form vh-100">
+
+    <div class="container form-container">
+        <div class="mb-3 text-center">
+            <h1 class="fad fa-coins bi ms-2 display-4"></h1>
+            <h1 class="h3 fw-normal mb-0">WFAR Management System</h1>
+            <small class="fw-bolder">REGISTRATION</small>
+        </div>
+        <hr>
+        <form (ngSubmit)="register(f)" #f="ngForm">
+            <div class="row row-cols-1 row-cols-md-3 g-2">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <input type="text" class="form-control" name="firstName" id="firstName" ngModel required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="middleName" class="form-label">Middle Name</label>
+                        <input type="text" class="form-control" name="middleName" id="middleName" ngModel>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" name="lastName" id="lastName" ngModel required>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-md-2 g-2">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" name="email" id="email" ngModel required email>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="contactNumber" class="form-label">Contact Number</label>
+                        <input type="text" class="form-control" name="contactNumber" id="contactNumber" ngModel required>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-md-2 g-2">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password" id="password" ngModel required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" ngModel required>
+                    </div>
+                </div>
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="!isValid">
+                {{ errorMessage }}
+              </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+                <button class="btn btn-primary me-md-2 px-5" type="submit" [disabled]="!f.valid">
+                    <span *ngIf="!onRegistration">Register</span>
+                    <div class="spinner-border spinner-border-sm" role="status" *ngIf="onRegistration">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                </button>
+                <div class="form-text fw-bolder">Already have an account? <a class="text-info text-decoration-none"
+                        style="cursor: pointer;" routerLink="../">Log in</a></div>
+            </div>
+        </form>
+        <div class="alert alert-success mt-3" role="alert" *ngIf="isRegistered">
+            Registration Complete! Proceed to <a routerLink="../" class="alert-link text-decoration-none">Log in page</a>.
+        </div>
+    </div>
+
+</main>
