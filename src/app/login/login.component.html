@@ -23,12 +23,12 @@
                 <div class="alert alert-danger my-2" *ngIf="isIncorrect" role="alert">
                     Incorrect Email or Password!
                 </div>
-                <button class="btn btn-link text-decoration-none mb-3" data-bs-toggle="modal"
+                <!-- <button class="btn btn-link text-decoration-none mb-3" data-bs-toggle="modal"
                     data-bs-target="#forgot-password-modal" type="button">
                     Forget Password
-                </button>
+                </button> -->
 
-                <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="!f.valid">
+                <button class="w-100 btn btn-lg btn-primary mt-2" type="submit" [disabled]="!f.valid">
                     <span *ngIf="!onSigninSpinner">Log in</span>
                     <div class="spinner-border spinner-border-sm" role="status" *ngIf="onSigninSpinner">
                         <span class="visually-hidden">Loading...</span>
@@ -41,7 +41,7 @@
     </main>
 </div>
 
-<div class="modal fade" id="forgot-password-modal" tabindex="-1">
+<!-- <div class="modal fade" id="forgot-password-modal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -64,4 +64,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->

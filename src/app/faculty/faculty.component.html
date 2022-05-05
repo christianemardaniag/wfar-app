@@ -1,5 +1,31 @@
-<div class="container-fluid">
+<div class="container-fluid"><br>
     <h3><i class="far fa-user-alt me-2"></i>Faculty</h3>
     <hr>
+    <div class="row g-2">
+        <div class="col-4">
+            <form class="mb-2"> 
+                <input type="text" class="form-control" name="search" id="search" placeholder="Search Faculty Name..."
+                    ngModel>
+            </form>
+            <div class="list-group">
+                <button class="list-group-item d-flex justify-content-between" style="text-align: start;" *ngFor="let faculty of users">
+                    <div class="">
+                        <div class="fw-bold fs-5">{{ (faculty.firstName + ' ' + faculty.lastName) | titlecase }}
+                        </div>
+                        <div>{{ faculty.email }}</div>
+                    </div>
+                    <small><i class="far fa-hashtag"></i> {{ faculty.employeeNo }}</small>
+                </button>
 
+            </div>
+            <div class="spinner-border" role="status" *ngIf="isFetchingForApprovalFaculty">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="text-secondary" *ngIf="(users.length === 0) && !isFetchingForApprovalFaculty">-- No Result --</div>
+            
+        </div>
+        <div class="col">
+            <app-dashboard-body></app-dashboard-body>
+        </div>
+    </div>
 </div>

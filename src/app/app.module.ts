@@ -15,6 +15,9 @@ import { ReportComponent } from './report/report.component';
 import { SettingComponent } from './setting/setting.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrationComponent } from './registration/registration.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { DashboardHeaderComponent } from './user-dashboard/dashboard-header/dashboard-header.component';
+import { DashboardBodyComponent } from './user-dashboard/dashboard-body/dashboard-body.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { RegistrationComponent } from './registration/registration.component';
     DepartmentHeadComponent,
     ReportComponent,
     SettingComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    UserDashboardComponent,
+    DashboardHeaderComponent,
+    DashboardBodyComponent
   ],
   imports: [
     BrowserModule,

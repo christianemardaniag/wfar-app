@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="alert alert-warning" role="alert" *ngIf="user.status === 'for approval'">
+        Your account is waiting for approval. Contact one of the Area Chair/Department Head for approval.
+      </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="fw-bold"><i class="fas fa-hashtag"></i> {{ user.employeeNo }}</div>
+            <h1>{{ user.firstName + ' ' + user.middleName + ' ' + user.lastName }}</h1>
+            <div>Position: <strong>{{ user.position | titlecase }}</strong></div>
+            <div>Department: <strong>{{ user.department }}</strong></div>
+            <div>Email Address: <strong>{{ user.email }}</strong></div>
+            <div>Contact Number: <strong>{{ user.contactNumber }}</strong></div>
+        </div>
+    </div>
+</div>

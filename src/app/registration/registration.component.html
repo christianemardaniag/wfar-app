@@ -56,6 +56,20 @@
                     </div>
                 </div>
             </div>
+            <div class="row row-cols-1 row-cols-md-2 g-2">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="department" class="form-label">Department</label>
+                        <input type="text" class="form-control" name="department" id="department" ngModel required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="employeeNo" class="form-label">Employee Number</label>
+                        <input type="text" class="form-control" name="employeeNo" id="employeeNo" ngModel required>
+                    </div>
+                </div>
+            </div>
             <div class="alert alert-danger" role="alert" *ngIf="!isValid">
                 {{ errorMessage }}
               </div>

@@ -2,7 +2,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from '../model/user';
+import { User } from '../model/user.model';
 
 @Component({
   selector: 'app-registration',
@@ -10,13 +10,13 @@ import { User } from '../model/user';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-  private baseUrl = "https://wfar-management-system-default-rtdb.firebaseio.com";
+  private baseUrl = "https://wfar-management-system-default-rtdb.firebaseio.com/";
   isValid = true;
   onRegistration = false;
   isRegistered = false;
   isEmailExist = false;
   errorMessage = "";
-  user = { firstName: '', middleName: '', lastName: '', email: '', password: '', contactNumber: '' };
+  user: User = new User;
   constructor(private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -46,11 +46,15 @@ export class RegistrationComponent implements OnInit {
     this.user.lastName = f.form.value.lastName;
     this.user.email = f.form.value.email;
     this.user.contactNumber = f.form.value.contactNumber;
+    this.user.department = f.form.value.department;
+    this.user.employeeNo = f.form.value.employeeNo;
+    this.user.position = "faculty";
+    this.user.status = "for approval";
   }
 
   isEmailAlreadyExist(email:string, registerForm: NgForm){
     this.isEmailExist = false;
-    this.http.get<any>(this.baseUrl + '/users.json').subscribe(data => {
+    this.http.get<any>(this.baseUrl + 'users.json').subscribe(data => {
       console.log("CHECKING DUPLICATE: EMAIL[" + email + "]");
         for (const key in data) {
           if (data.hasOwnProperty(key)) {
@@ -74,7 +78,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   processRegistration(registerForm: NgForm){
-    this.http.post(this.baseUrl + '/users.json', this.user).subscribe(() => {
+    this.http.put(this.baseUrl + 'users/' + this.user.employeeNo + '.json', this.user).subscribe(() => {
       this.onRegistration = false;
       this.isRegistered = true;
       this.isValid = true;

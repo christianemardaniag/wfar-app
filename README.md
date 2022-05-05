@@ -1,13 +1,8 @@
 # Web-Based Weekly Faculty Accomplishments Report (WFAR) Management System
 
-Create a system that will allow a faculty to submit their Weekly Faculty Accomplishment Report (WFAR).
-
-The Area Chair or Department Head can then view, give a comment, create a report, filter, search, and print the submitted WFAR by the faculty assigned to them.
-
-Admin can access all the features and see all the WFAR submissions. Aside from that, the admin can assign faculty to be checked by Area Chair or Department Head. Admin can promote/demote a faculty member to an Area Chair or Department Head. Admin can create a new Semester (new semester means new batch of WFAR).
+Create a system that will allow a faculty to submit their Weekly Faculty Accomplishment Report (WFAR). Per semester, there are 18 weeks (sometimes 15 weks) of classes. Each week, a faculty member must submit their WFAR. In a WFAR, faculty must indicate all his/her subjects per week. Each subject must include the following information:
 
 **Information needed for a WFAR:**
-
 - Date of Class/Accomplishment
 - Subject Being Taught
 - Course, Years and Section
@@ -17,6 +12,17 @@ Admin can access all the features and see all the WFAR submissions. Aside from t
 - Attachments
     - Team Meet Screenshot/s
     - Provided Activity Screenshot/s
+
+WFAR entry of each faculty is always grouped per week, this means that if a faculty made a submission 5 times (per subject/section) regardless of date and time of submission , then indicated the same Week number, the system will group all the entries into 1 WFAR (the week indicated).
+
+Faculty are required to submit their WFAR through the system. Faculty can view, edit, archive all their submissions. When a faculty submitted theire WFAR, the are chair/department head will receive a notification. The WFAR submission will then have a status of "For checking".
+
+The Area Chairs/Department Heads are a faculty member that is tasked to check the WFAR of each faculty assigned to them. The admin is the one who assigned a group of faculty members that the are chairs/department heads should monitor. Area chairs/Department heads can only see the WFAR submission of the faculty assigned to them. When checking the WFAR, thet can indicate if the WFAR submission of the faculty assigned to them is correct and complete by changing status as "OK."
+(Faculty will receive a notification). They can also leave feedback/comments in a WFAR submission if there is a correction,and they can change its status to "With Revisions" (Faculty will receive a notification). They can also generate a report of faculty members under them who have their WFAR submission completed (With "OK" status). They can also search and filter the WFAR submission to them.
+
+Admin can access all the features and see all the WFAR submissions. Aside from that, the admin can assign faculty to be checked by Area Chair or Department Head. Admin can promote/demote a faculty member to an Area Chair or Department Head. Admin can create a new Semester (new semester means new batch of WFAR).
+
+
 
 Sample WFAR:
 [Week 1 - Galang, Gabriel M Sample.docx](https://bulsumain-my.sharepoint.com/:w:/g/personal/gabriel_galang_bulsumain_onmicrosoft_com/EbJl_LeZVQpDoWbznpziUwQBsXjdVlHMdFJ-mTcxmKRL1Q?rtime=56_1Q5oX2kg)

@@ -30,9 +30,10 @@ export class LoginComponent implements OnInit {
         for (const key in data) {
           if (data.hasOwnProperty(key)) {
             const element = data[key];
-            if (email == element.email && password == element.password) {
+            if (email == element.email && password == element.password && element.status != 'archived') {
+              let id = element.employeeNo;
               this.isLoggedIn = true;
-              this.router.navigate(['/main/dashboard']);
+              this.router.navigate(['/user', id]);
             }
           }
         }

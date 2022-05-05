@@ -10,6 +10,7 @@ import { MainComponent } from './main/main.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ReportComponent } from './report/report.component';
 import { SettingComponent } from './setting/setting.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: 'report', component: ReportComponent },
       { path: 'academic', component: AcademicComponent },
     ]},
+  { path: 'user/:id', component: UserDashboardComponent },
   { path: '', redirectTo: '/login', pathMatch: "full" }
 
 ];
