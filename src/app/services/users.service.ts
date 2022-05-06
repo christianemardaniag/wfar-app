@@ -14,17 +14,13 @@ export class UsersService {
     console.log("DATABASE: " + this.baseUrl);
    }
 
-  getAllUsers() {
-    return this.http.get<any>(this.baseUrl + 'users.json');
-  }
-
-  getAllActiveUsers() {
+  getAllActiveFaculty() {
     return this.http.get<any>(this.baseUrl + 'users.json').pipe(map(responseData => {
       const facultyForApproval = [];
       for (const key in responseData){
         if (responseData.hasOwnProperty(key)) {
-          const element = responseData[key];
-          if (element.status != 'archived') {
+          const e = responseData[key];
+          if (e.status != 'archived' && e.position === 'faculty') {
             facultyForApproval.push(responseData[key]);
           }
         }
@@ -38,8 +34,8 @@ export class UsersService {
       const facultyForApproval = [];
       for (const key in responseData){
         if (responseData.hasOwnProperty(key)) {
-          const element = responseData[key];
-          if (element.status === 'for approval') {
+          const e = responseData[key];
+          if (e.status === 'for approval' && e.position === 'faculty') {
             facultyForApproval.push(responseData[key]);
           }
         }
@@ -52,5 +48,9 @@ export class UsersService {
     return this.http.patch(this.baseUrl + 'users/' + id +'.json', {
       status: status
     });
+  }
+
+  getUserById(id:string){
+    return this.http.get<any>(this.baseUrl + 'users/'+id+'.json');
   }
 }

@@ -10,6 +10,7 @@ import { MainComponent } from './main/main.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ReportComponent } from './report/report.component';
 import { SettingComponent } from './setting/setting.component';
+import { DashboardBodyComponent } from './user-dashboard/dashboard-body/dashboard-body.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 const routes: Routes = [
@@ -20,7 +21,9 @@ const routes: Routes = [
   { path: 'main', component: MainComponent, 
     children: [
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'faculty', component: FacultyComponent },
+      { path: 'faculty', component: FacultyComponent, children: [
+          { path: ':id', component: DashboardBodyComponent}
+        ]},
       { path: 'department-head', component: DepartmentHeadComponent },
       { path: 'report', component: ReportComponent },
       { path: 'academic', component: AcademicComponent },

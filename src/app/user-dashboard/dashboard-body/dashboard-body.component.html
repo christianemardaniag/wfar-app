@@ -1,7 +1,9 @@
-<div class="container">
-    <div class="alert alert-warning" role="alert" *ngIf="user.status === 'for approval'">
-        Your account is waiting for approval. Contact one of the Area Chair/Department Head for approval.
-      </div>
+<div class="text-center">
+    <div class="spinner-border" role="status" *ngIf="isFetchingData">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+<div class="container" *ngIf="!isFetchingData">
     <div class="card">
         <div class="card-body">
             <div class="fw-bold"><i class="fas fa-hashtag"></i> {{ user.employeeNo }}</div>

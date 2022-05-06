@@ -8,14 +8,14 @@
                     ngModel>
             </form>
             <div class="list-group">
-                <button class="list-group-item d-flex justify-content-between" style="text-align: start;" *ngFor="let faculty of users">
+                <a class="list-group-item d-block d-lg-flex justify-content-lg-between" [routerLink]="faculty.employeeNo" routerLinkActive="active" *ngFor="let faculty of users">
                     <div class="">
                         <div class="fw-bold fs-5">{{ (faculty.firstName + ' ' + faculty.lastName) | titlecase }}
                         </div>
                         <div>{{ faculty.email }}</div>
                     </div>
                     <small><i class="far fa-hashtag"></i> {{ faculty.employeeNo }}</small>
-                </button>
+                </a>
 
             </div>
             <div class="spinner-border" role="status" *ngIf="isFetchingForApprovalFaculty">
@@ -25,7 +25,7 @@
             
         </div>
         <div class="col">
-            <app-dashboard-body></app-dashboard-body>
+            <router-outlet [id]="id"></router-outlet>
         </div>
     </div>
 </div>
