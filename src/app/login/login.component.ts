@@ -29,11 +29,17 @@ export class LoginComponent implements OnInit {
         console.log("LOGGING IN: EMAIL[" + email + "]");
         for (const key in data) {
           if (data.hasOwnProperty(key)) {
-            const element = data[key];
-            if (email == element.email && password == element.password && element.status != 'archived') {
-              let id = element.employeeNo;
+            const e = data[key];
+            if (email == e.email && password == e.password && e.status != 'archived') {
+              let id = e.employeeNo;
               this.isLoggedIn = true;
-              this.router.navigate(['/user', id]);
+              localStorage.setItem('loggedId', id);
+                localStorage.setItem('position', e.position);
+              if (e.position === 'faculty') {
+                this.router.navigate(['/user', id]);
+              } else {
+                this.router.navigate(['/main/dashboard']);
+              }
             }
           }
         }

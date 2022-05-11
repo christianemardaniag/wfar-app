@@ -9,4 +9,7 @@ export class User {
     status?: string = '';
     position?: string = '';
     department: string = '';
+    handleById?: string = '';
+    handleByName?: string = '';
+    updateBy?: string = '';
 }

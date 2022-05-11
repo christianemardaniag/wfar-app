@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
 
   updateStatus(id: string, status: string){
     console.log("FACULTY: ID["+id+"] STATUS["+status+"]");
-    this.userService.updateStatus(id, status).subscribe(() => {
+    this.userService.updateStatus(id, status, 'Admin').subscribe(() => {
       this.fetchForApprovalFaculty();
     });
   }

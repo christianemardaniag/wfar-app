@@ -3,12 +3,17 @@
     <hr>
     <div class="row g-2">
         <div class="col-4">
-            <form class="mb-2"> 
+            <h5>List of Faculties</h5>
+            <!-- <form class="mb-2"> 
                 <input type="text" class="form-control" name="search" id="search" placeholder="Search Faculty Name..."
                     ngModel>
-            </form>
+            </form> -->
             <div class="list-group">
-                <a class="list-group-item d-block d-lg-flex justify-content-lg-between" [routerLink]="faculty.employeeNo" routerLinkActive="active" *ngFor="let faculty of users">
+                <a class="list-group-item list-group-item-action d-block d-lg-flex justify-content-lg-between"
+                [ngClass]="{'list-group-item-info': faculty.status === 'for approval', 'list-group-item-warning': faculty.handleById === ''}"
+                 [routerLink]="faculty.employeeNo"
+                 routerLinkActive="active"
+                 *ngFor="let faculty of users">
                     <div class="">
                         <div class="fw-bold fs-5">{{ (faculty.firstName + ' ' + faculty.lastName) | titlecase }}
                         </div>
@@ -25,7 +30,7 @@
             
         </div>
         <div class="col">
-            <router-outlet [id]="id"></router-outlet>
+            <router-outlet [id]="id" (refreshData)="refreshData($event)"></router-outlet>
         </div>
     </div>
 </div>

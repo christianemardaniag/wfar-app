@@ -1,3 +1,35 @@
-<div class="container-fluid">
-    <h3>Department Head</h3>
+<div class="container-fluid"><br>
+    <h3><i class="fas fa-user-alt me-2"></i>Department Head</h3>
+    <hr>
+    <div class="row g-2">
+        <div class="col-4">
+            <h5>List of Area Chair/Department Head</h5>
+            <!-- <form class="mb-2"> 
+                <input type="text" class="form-control" name="search" id="search" placeholder="Search Faculty Name..."
+                    ngModel>
+            </form> -->
+            <div class="list-group">
+                <a class="list-group-item list-group-item-action d-block d-lg-flex justify-content-lg-between" [routerLink]="faculty.employeeNo" routerLinkActive="active" 
+                [ngClass]="{'list-group-item-warning': faculty.handleById === ''}"
+                *ngFor="let faculty of users">
+                    <div class="">
+                        <div class="fw-bold fs-5">{{ (faculty.firstName + ' ' + faculty.lastName) | titlecase }}
+                        </div>
+                        <div>{{ faculty.email }}</div>
+                    </div>
+                    <small class=""><i class="far fa-hashtag"></i> {{ faculty.employeeNo }}</small>
+                </a>
+
+            </div>
+            <div class="spinner-border" role="status" *ngIf="isFetchingForApprovalFaculty">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="text-secondary" *ngIf="(users.length === 0) && !isFetchingForApprovalFaculty">-- No Result --</div>
+            
+        </div>
+        <div class="col">
+            
+            <router-outlet [id]="id"></router-outlet>
+        </div>
+    </div>
 </div>

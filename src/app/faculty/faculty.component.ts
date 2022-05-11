@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { User } from '../model/user.model';
 import { UsersService } from '../services/users.service';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Subscription } from 'rxjs/internal/Subscription';
 
 @Component({
   selector: 'app-faculty',
@@ -14,22 +11,43 @@ export class FacultyComponent implements OnInit {
   users: User[] = [];
   isFetchingForApprovalFaculty = true;
   id: string = '';
-  constructor(private http: HttpClient, private userService: UsersService, private route: ActivatedRoute) { }
+  constructor(private userService: UsersService) {
+   }
 
   ngOnInit(): void {
-    this.fetchForApprovalFaculty();    
+    this.fetchForApprovalFaculty();
+  }
+
+  refreshData(r:any){
+    console.log(r);
+    
+    // this.fetchForApprovalFaculty();
   }
 
   fetchForApprovalFaculty() {
     console.log("FETCHING FACULTY FOR APPROVAL:");
     this.isFetchingForApprovalFaculty = true;
-    this.userService.getAllActiveFaculty().subscribe(faculty => {
-      this.users = faculty;
-      console.log(this.users);
-      this.isFetchingForApprovalFaculty = false;
-    });
-
+    if (localStorage.getItem('position') === 'department head') {
+      let id = localStorage.getItem('loggedId')!;
+      this.userService.getAllActiveFacultyHandleBy(id).subscribe(faculty => {
+        this.users = faculty;
+        console.log(this.users);
+        this.isFetchingForApprovalFaculty = false;
+      });
+    } else {
+      this.userService.getAllActiveFaculty().subscribe(faculty => {
+        this.users = faculty;
+        console.log(this.users);
+        this.isFetchingForApprovalFaculty = false;
+      });
+    }
   }
 
+  updateStatus(id: string, status: string) {
+    console.log("FACULTY: ID[" + id + "] STATUS[" + status + "]");
+    this.userService.updateStatus(id, status, 'Admin').subscribe(() => {
+      this.fetchForApprovalFaculty();
+    });
+  }
 
 }

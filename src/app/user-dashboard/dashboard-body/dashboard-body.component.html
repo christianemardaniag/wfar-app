@@ -3,15 +3,101 @@
         <span class="visually-hidden">Loading...</span>
     </div>
 </div>
+
 <div class="container" *ngIf="!isFetchingData">
-    <div class="card">
+    <div class="card mb-2">
         <div class="card-body">
-            <div class="fw-bold"><i class="fas fa-hashtag"></i> {{ user.employeeNo }}</div>
-            <h1>{{ user.firstName + ' ' + user.middleName + ' ' + user.lastName }}</h1>
-            <div>Position: <strong>{{ user.position | titlecase }}</strong></div>
-            <div>Department: <strong>{{ user.department }}</strong></div>
-            <div>Email Address: <strong>{{ user.email }}</strong></div>
-            <div>Contact Number: <strong>{{ user.contactNumber }}</strong></div>
+            <div class="d-flex justify-content-between">
+                <div>
+                    <span class="badge rounded-pill" [ngClass]="{'bg-success': user.status === 'approved',
+                        'bg-warning': user.status === 'for approval', 'bg-danger': user.status === 'declined'}">
+                        {{ user.status | titlecase }}
+                    </span>
+                    <span class="badge rounded-pill bg-warning ms-1" *ngIf="user.handleById === ''">
+                        No Assigned Department Head
+                    </span>
+                    <div class="fw-bold"><i class="fas fa-hashtag"></i> {{ user.employeeNo }}</div>
+                    <h1>{{ (user.lastName + ', ' + user.firstName + ' ' + user.middleName) | titlecase }}</h1>
+                    <div>Position: <strong>{{ user.position | titlecase }}</strong></div>
+                    <div>Department: <strong>{{ user.department }}</strong></div>
+                    <div>Email Address: <strong>{{ user.email }}</strong></div>
+                    <div>Contact Number: <strong>{{ user.contactNumber }}</strong></div>
+                    <div>Handle by :
+                        <a class="fw-bold text-decoration-none" [routerLink]="'/main/department-head/'+user.handleById">
+                            {{ user.handleByName | titlecase }}</a>
+                        <button class="btn" (click)="isEditingMode=true"><i class="fas fa-edit" data-toggle="tooltip" data-placement="auto"
+                                title="Change Department Head"></i> Edit</button>
+                    </div>
+                    <div class="row mt-2" *ngIf="isEditingMode">
+                        <div class="col">
+                            <select class="form-select d-inline" name="handleBy" #dh ngModel>
+                                <option selected disabled>-- Select Department Head -- </option>
+                                <option [value]="dh.employeeNo" *ngFor="let dh of departmentHeads">{{ dh.lastName+', '+dh.firstName }}</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <div class="btn-group" role="group">
+                                <button type="submit" class="btn btn-success" (click)="updateHandleBy(dh.value)">
+                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="isSaving"></span>
+                                    <span *ngIf="!isSaving"><i class="fas fa-save"></i> Save</span>
+                                </button>
+                                <button type="button" class="btn btn-secondary" (click)="isEditingMode=false"><i class="fas fa-ban"></i> Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="position != 'faculty'">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Action
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><button class="dropdown-item" (click)="updateStatus(id, 'approved')"><i
+                                        class="fas fa-check-circle text-success"></i> Approve</button></li>
+                            <li><button class="dropdown-item" (click)="updateStatus(id, 'declined')"><i
+                                        class="fas fa-times-square text-warning"></i> Decline</button></li>
+                            <hr class="dropdown-divider" *ngIf="position === 'admin'">
+                            <li><button class="dropdown-item" (click)="updatePosition(id, 'department head')"
+                                    *ngIf="position === 'admin' && user.position === 'faculty'"><i
+                                        class="fas fa-thumbs-up text-primary"></i>
+                                    Promote</button></li>
+                            <li><button class="dropdown-item" (click)="updatePosition(id, 'faculty')"
+                                    *ngIf="position === 'admin' && user.position === 'department head'"><i
+                                        class="fas fa-thumbs-down text-danger"></i>
+                                    Demote</button></li>
+                            <hr class="dropdown-divider">
+                            <li><button class="dropdown-item" (click)="updateStatus(id, 'archived')"><i
+                                        class="fas fa-trash text-danger"></i> Archive</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card" *ngIf="user.position != 'faculty'">
+        <div class="card-body">
+            <table class="table table-striped table-hover">
+                <caption>List of Faculty Handle by {{ (user.firstName + ' ' + user.lastName) | titlecase }}</caption>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Last Name</th>
+                        <th>First Name</th>
+                        <th>Position</th>
+                        <th>Department</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let f of facultyHandledBy" style="cursor: pointer;" (click)="goToUser(f.employeeNo, f.position!)">
+                        <td>{{ f.employeeNo }}</td>
+                        <td>{{ f.lastName | titlecase}}</td>
+                        <td>{{ f.firstName | titlecase}}</td>
+                        <td>{{ f.position | titlecase}}</td>
+                        <td>{{ f.department }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

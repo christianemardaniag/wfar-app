@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
+  id = localStorage.getItem('loggedId');
+  position = localStorage.getItem('position');
+  isDepartmentHead = (this.position === 'department head') ? true:false;
 
   constructor() { }
 
   ngOnInit(): void {
+    
+    
   }
 
 }
