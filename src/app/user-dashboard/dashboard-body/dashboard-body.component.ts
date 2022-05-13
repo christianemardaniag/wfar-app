@@ -1,7 +1,11 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/internal/Subscription';
+
+import { FileUpload } from 'src/app/model/file-upload.model';
 import { User } from 'src/app/model/user.model';
+
+import { FileUploadService } from 'src/app/services/file-upload.service';
 import { UsersService } from 'src/app/services/users.service';
 
 declare var jquery: any;
@@ -14,21 +18,29 @@ declare var $: any;
 })
 export class DashboardBodyComponent implements OnInit, OnDestroy {
   @Input() id: string = '';
-  @Output() refreshData = new EventEmitter<string>();
   user: User = new User;
+  
   departmentHeads: User[] = [];
   facultyHandledBy: User[] = [];
+  file: FileUpload[] = [];
+  
   paramsSubscription: Subscription = new Subscription;
   isFetchingData = false;
   isEditingMode = false;
   isSaving = false;
+  
   position = localStorage.getItem('position');
 
-  constructor(private router: Router, private route: ActivatedRoute, private userService: UsersService) { }
+  constructor(
+    private router: Router, 
+    private route: ActivatedRoute, 
+    private userService: UsersService,
+    private fileUploadService: FileUploadService
+    ) { }
 
   ngOnInit(): void {
     $('[data-toggle="tooltip"]').tooltip();
-    
+
     this.paramsSubscription = this.route.paramMap.subscribe(
       params => {
         this.id = params.get('id')!;
@@ -39,21 +51,20 @@ export class DashboardBodyComponent implements OnInit, OnDestroy {
           this.fetchFacultyHandledBy();
         }
       }
-    );    
-    this.refreshData.emit('refresh'); 
+    );
   }
 
-  fetchUsers(){
+  fetchUsers() {
     this.userService.getUserById(this.id).subscribe(data => {
       this.user = data;
       this.isFetchingData = false;
       this.isSaving = false;
     });
   }
-  
+
   fetchFacultyHandledBy() {
     this.userService.getHandleFaculty(this.id).subscribe(data => {
-      this.facultyHandledBy = data; 
+      this.facultyHandledBy = data;
     });
   }
 
@@ -70,11 +81,9 @@ export class DashboardBodyComponent implements OnInit, OnDestroy {
       for (const x of this.facultyHandledBy) {
         let info = { handleById: '', handleByName: '' };
         this.userService.updateInfo(x.employeeNo, info).subscribe();
-        
         this.showUser();
       }
     }
-    
     this.userService.updatePosition(id, pos).subscribe(() => {
       this.showUser();
     });
@@ -83,7 +92,7 @@ export class DashboardBodyComponent implements OnInit, OnDestroy {
   showUser() {
     this.userService.getUserById(this.id).subscribe(data => {
       this.user = data;
-      this.isFetchingData = false;    
+      this.isFetchingData = false;
     });
   }
 
@@ -105,11 +114,11 @@ export class DashboardBodyComponent implements OnInit, OnDestroy {
     });
   }
 
-  goToUser(id: string, pos: string){
-    if(pos === 'faculty'){
-      this.router.navigate(['/main/faculty/'+id]);
+  goToUser(id: string, pos: string) {
+    if (pos === 'faculty') {
+      this.router.navigate(['/main/faculty/' + id]);
     } else {
-      this.router.navigate(['/main/department-head/'+id]);
+      this.router.navigate(['/main/department-head/' + id]);
     }
   }
 

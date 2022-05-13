@@ -22,12 +22,13 @@
                     <div>Department: <strong>{{ user.department }}</strong></div>
                     <div>Email Address: <strong>{{ user.email }}</strong></div>
                     <div>Contact Number: <strong>{{ user.contactNumber }}</strong></div>
-                    <div>Handle by :
+                    <div *ngIf="position != 'faculty'">Handle by:
                         <a class="fw-bold text-decoration-none" [routerLink]="'/main/department-head/'+user.handleById">
                             {{ user.handleByName | titlecase }}</a>
                         <button class="btn" (click)="isEditingMode=true"><i class="fas fa-edit" data-toggle="tooltip" data-placement="auto"
                                 title="Change Department Head"></i> Edit</button>
                     </div>
+                    <div *ngIf="position === 'faculty'">Handle by: <strong>{{ user.handleByName | titlecase }}</strong></div>
                     <div class="row mt-2" *ngIf="isEditingMode">
                         <div class="col">
                             <select class="form-select d-inline" name="handleBy" #dh ngModel>
@@ -79,7 +80,7 @@
         <div class="card-body">
             <table class="table table-striped table-hover">
                 <caption>List of Faculty Handle by {{ (user.firstName + ' ' + user.lastName) | titlecase }}</caption>
-                <thead>
+                <thead class="table-light">
                     <tr>
                         <th>ID</th>
                         <th>Last Name</th>
@@ -100,4 +101,8 @@
             </table>
         </div>
     </div>
+
+    <app-report-body [id]="id"></app-report-body>
+    
+    <!-- <input type="file" name="file" id="file" accept="*.png.jpg" multiple="multiple"> -->
 </div>

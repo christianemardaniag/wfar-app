@@ -9,6 +9,7 @@ export class UsersService {
   private baseUrl = "https://wfar-management-system-default-rtdb.firebaseio.com/";
   constructor(private http: HttpClient) {
     console.log("DATABASE: " + this.baseUrl);
+  
    }
 
   getAllActiveFaculty() {

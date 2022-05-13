@@ -1,14 +1,59 @@
-<div class="container-fluid">
-    <h3>Academic</h3>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta consequuntur tempora esse iste dolor vero illum veniam non rerum est, asperiores accusamus alias deserunt temporibus fugit officia, enim qui quis.
-    Itaque, consequuntur asperiores porro doloribus, corporis nulla, esse nostrum voluptatum natus tempore odio at magnam modi harum neque vero aliquam ab. Molestias, dolore incidunt. Iste praesentium atque distinctio ex molestias.
-    Ipsam nulla quidem laborum id pariatur? Amet quos repellat vel quae, reprehenderit, atque tenetur qui, mollitia impedit ea corrupti est laudantium quo! Deserunt et, vitae error sunt quaerat nisi suscipit.
-    Repellendus sint sequi debitis dicta quae. Maiores itaque adipisci perferendis quibusdam, aperiam dignissimos reprehenderit amet deserunt delectus necessitatibus id sequi voluptatibus repellendus. Necessitatibus deserunt, ratione impedit debitis praesentium voluptatum harum!
-    Quibusdam magni itaque repellendus earum! Iste mollitia, reprehenderit eaque itaque aliquid, earum, nihil cupiditate facilis velit quae assumenda aut quidem ab praesentium voluptate recusandae. Nobis quae mollitia totam reprehenderit veritatis?
-    A, eaque optio mollitia reprehenderit laudantium necessitatibus provident, iste sit vero, quo similique. Quos quo architecto accusantium numquam beatae voluptatum maiores nisi eius, similique dignissimos aspernatur nesciunt unde nam accusamus.
-    Cumque omnis nisi, voluptates impedit molestiae consectetur assumenda consequuntur blanditiis? Assumenda, voluptas provident! Libero ipsam sed, laudantium impedit vitae, tenetur dolorum perferendis animi debitis sit quas tempora pariatur eius iusto!
-    Minima molestiae vel, aut, assumenda placeat facere at explicabo rerum architecto facilis nostrum nemo expedita iste, voluptatibus fugiat odit quisquam corporis? Culpa dolorem voluptate molestias, perspiciatis laboriosam reprehenderit harum! Quod?
-    Dolores, libero. Odit eum, velit adipisci aut enim voluptates suscipit, non labore esse quas, officia incidunt aliquam laboriosam hic facilis. Vitae ratione consectetur iure? Laboriosam eveniet animi temporibus dolor facilis.
-    Quaerat officiis nam nulla. Porro ex necessitatibus esse ut fuga optio totam sequi maxime, excepturi at consectetur eveniet, ducimus libero minus voluptas provident iure ab, architecto veniam accusamus laboriosam repudiandae.</p>      
-</div>
+<div class="container-fluid"><br>
+    <h3><i class="far fa-calendar-alt me-2"></i>Academic </h3>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <form (ngSubmit)="createNewAcademic(f)" #f="ngForm">
+                <div class="mb-3">
+                    <label for="academicYear" class="form-label">Academic Year</label>
+                    <input type="text" class="form-control" id="academicYear" name="academicYear"
+                        placeholder="2022-2023" ngModel required>
+                </div>
+                <div class="mb-3">
+                    <label for="semester" class="form-label">Semester</label>
+                    <select class="form-select" ngModel required>
+                        <option selected disabled>-- Semester --</option>
+                        <option value="1st Semester">1st Semester</option>
+                        <option value="2nd Semester">2nd Semester</option>
+                      </select>
+                </div>
+                <div class="mb-3">
+                    <label for="startDate">Start Date</label>
+                    <input type="date" class="form-control" name="startDate" ngModel required>
+                </div>
+                <div class="mb-3">
+                    <label for="endDate">End Date</label>
+                    <input type="date" class="form-control" name="endDate" ngModel required>
+                </div>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary" type="button">Save</button>
+                  </div>
+            </form>
+        </div>
+        <div class="col-8">
+            <h5>List of Academic</h5>
+            <table class="table table-striped">
+                <caption *ngIf="(academic.length === 0) && !isFetching">-- No Academic to show --</caption>
 
+                <thead class="table-light">
+                    <tr>
+                        <th>Academic Year</th>
+                        <th>Semester</th>
+                        <th>No. of Weeks</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let a of academic">
+                        <th>{{ a.academicYear }}</th>
+                        <th>{{ a.semester }}</th>
+                        <th>{{ a.semester }}</th>
+                        <th>{{ a.startDate }}</th>
+                        <th>{{ a.endDate }}</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

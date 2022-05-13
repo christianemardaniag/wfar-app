@@ -18,6 +18,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { DashboardHeaderComponent } from './user-dashboard/dashboard-header/dashboard-header.component';
 import { DashboardBodyComponent } from './user-dashboard/dashboard-body/dashboard-body.component';
+import { ReportBodyComponent } from './report/report-body/report-body.component';
 
 @NgModule({
   declarations: [
@@ -34,13 +35,15 @@ import { DashboardBodyComponent } from './user-dashboard/dashboard-body/dashboar
     RegistrationComponent,
     UserDashboardComponent,
     DashboardHeaderComponent,
-    DashboardBodyComponent
+    DashboardBodyComponent,
+    ReportBodyComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

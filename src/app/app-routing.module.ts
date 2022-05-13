@@ -30,7 +30,10 @@ const routes: Routes = [
       { path: 'department-head', component: DepartmentHeadComponent, children: [
         { path: ':id', component: DashboardBodyComponent }
       ]},
-      { path: 'report', component: ReportComponent },
+      { path: 'report', component: ReportComponent, children: [
+        { path: 'u/:id', component: DashboardBodyComponent },
+        { path: 'r/:id', component: DashboardBodyComponent }
+      ]},
       { path: 'academic', component: AcademicComponent },
     ]
   },
