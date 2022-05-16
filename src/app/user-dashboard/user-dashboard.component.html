@@ -1,13 +1,3 @@
 <app-dashboard-header></app-dashboard-header>
-<div class="container">
 
-    <div class="text-center">
-        <div class="spinner-border" role="status" *ngIf="isFetchingData">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </div>
-    <div class="alert alert-warning" role="alert" *ngIf="user.status === 'for approval'">
-        Your account is waiting for approval. Contact one of the Area Chair/Department Head for approval.
-    </div>
-</div>
-<app-dashboard-body [id]="id"></app-dashboard-body>
+<router-outlet [id]="id"></router-outlet>

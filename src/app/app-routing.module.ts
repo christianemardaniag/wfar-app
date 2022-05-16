@@ -8,6 +8,8 @@ import { FacultyComponent } from './faculty/faculty.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { ReportUploadComponent } from './report/report-upload/report-upload.component';
+import { ReportViewComponent } from './report/report-view/report-view.component';
 import { ReportComponent } from './report/report.component';
 import { SettingComponent } from './setting/setting.component';
 import { DashboardBodyComponent } from './user-dashboard/dashboard-body/dashboard-body.component';
@@ -24,20 +26,25 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       {
         path: 'faculty', component: FacultyComponent, children: [
-          { path: ':id', component: DashboardBodyComponent }
+          { path: ':id', component: DashboardBodyComponent },
+          { path: 'view/:id', component: ReportViewComponent }
         ]
       },
       { path: 'department-head', component: DepartmentHeadComponent, children: [
         { path: ':id', component: DashboardBodyComponent }
       ]},
       { path: 'report', component: ReportComponent, children: [
-        { path: 'u/:id', component: DashboardBodyComponent },
-        { path: 'r/:id', component: DashboardBodyComponent }
+        { path: 'upload/:id', component: DashboardBodyComponent },
+        { path: 'view/:id', component: ReportViewComponent }
       ]},
       { path: 'academic', component: AcademicComponent },
     ]
   },
-  { path: 'user/:id', component: UserDashboardComponent },
+  { path: 'user', component: UserDashboardComponent, children: [
+    { path: ':id', component: DashboardBodyComponent },
+    { path: 'upload/:id', component: ReportUploadComponent },
+    { path: 'view/:id', component: ReportViewComponent }
+  ]},
   { path: '', redirectTo: '/login', pathMatch: "full" }
 
 ];

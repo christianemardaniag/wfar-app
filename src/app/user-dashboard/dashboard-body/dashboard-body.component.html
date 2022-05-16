@@ -4,6 +4,18 @@
     </div>
 </div>
 
+<!-- <div class="container">
+
+    <div class="text-center">
+        <div class="spinner-border" role="status" *ngIf="isFetchingData">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <div class="alert alert-warning" role="alert" *ngIf="user.status === 'for approval'">
+        Your account is waiting for approval. Contact one of the Area Chair/Department Head for approval.
+    </div>
+</div> -->
+
 <div class="container" *ngIf="!isFetchingData">
     <div class="card mb-2">
         <div class="card-body">
@@ -104,5 +116,5 @@
 
     <app-report-body [id]="id"></app-report-body>
     
-    <!-- <input type="file" name="file" id="file" accept="*.png.jpg" multiple="multiple"> -->
+    
 </div>

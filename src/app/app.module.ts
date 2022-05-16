@@ -19,6 +19,8 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { DashboardHeaderComponent } from './user-dashboard/dashboard-header/dashboard-header.component';
 import { DashboardBodyComponent } from './user-dashboard/dashboard-body/dashboard-body.component';
 import { ReportBodyComponent } from './report/report-body/report-body.component';
+import { ReportViewComponent } from './report/report-view/report-view.component';
+import { ReportUploadComponent } from './report/report-upload/report-upload.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { ReportBodyComponent } from './report/report-body/report-body.component'
     UserDashboardComponent,
     DashboardHeaderComponent,
     DashboardBodyComponent,
-    ReportBodyComponent
+    ReportBodyComponent,
+    ReportViewComponent,
+    ReportUploadComponent
   ],
   imports: [
     BrowserModule,

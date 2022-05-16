@@ -1,16 +1,18 @@
 export class Report {
-    id: string = '';
+    id?: string = '';
     academicID: string = '';
     userID: string = '';
-    week: string = '';
-    date: string = '';
+    userName: string = '';
+    week: number = 0;
+    weekDays: string = '';
+    submitDate: string = '';
     subject: string = '';
     cys: string = '';
-    attendeesNo: number = 0;
+    noOfAttendees: number = 0;
     link: string = '';
     activities: string = '';
     status: string = '';
     comments?: string = '';
-    teamImg = [{ fileName: '', path: '' }]
-    actImg = [{ fileName: '', path: '' }]
+    teamMeetScreenshot: string[] = [];
+    providedActivities: string[] = [];
 }

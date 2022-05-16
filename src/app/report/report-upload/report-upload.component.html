@@ -1,0 +1,74 @@
+<div class="container-fluid" style="max-width: 800px;">
+    <h3>Upload Weekly Report</h3>
+    <hr>
+    <form (ngSubmit)="upload(f)" #f="ngForm">
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label for="week" class="form-label">
+                        Week <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+                            *ngIf="isFetching"></span>
+                    </label>
+                    <select class="form-select" id="week" name="week" [disabled]="isFetching" ngModel required>
+                        <ng-container *ngFor="let a of academic">
+                            <option [value]="a.id+'::'+w.weekCtr" *ngFor="let w of a.weeks">
+                                {{ (w.start|date:'MMM d')+' - '+(w.end|date:'MMM d')+' (Week '+w.weekCtr+')'}}</option>
+                        </ng-container>
+
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" class="form-control" id="subject" name="subject" ngModel required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label for="cys" class="form-label">Course, Year, and Section</label>
+                    <input type="text" class="form-control" id="cys" name="cys" ngModel required>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label for="noOfAttendees" class="form-label">No. of Attendees</label>
+                    <input type="number" class="form-control" id="noOfAttendees" min="1" name="noOfAttendees" ngModel
+                        required>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="link" class="form-label">Link of team meet recording</label>
+            <input type="text" class="form-control" id="link" name="link" ngModel required>
+        </div>
+        <div class="mb-3">
+            <label for="activities" class="form-label">Learning Activities</label>
+            <textarea class="form-control" id="activities" rows="3" name="activities" ngModel required></textarea>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label for="teamMeetScreenshot" class="form-label">Teams Meet Screenshot</label>
+                    <input type="file" class="form-control" name="teamMeetScreenshot" id="teamMeetScreenshot"
+                        accept="image/*" multiple="multiple" (change)="teamMeetScreenshotOnChange($event)" ngModel required>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label for="providedActivities" class="form-label">Provided Activities</label>
+                    <input type="file" class="form-control" name="providedActivities" id="providedActivities"
+                        accept="image/*" multiple="multiple" (change)="providedActivitiesOnChange($event)" ngModel required>
+                </div>
+            </div>
+        </div>
+        <div class="d-grid mb-3">
+            <button type="submit" class="btn btn-primary" [disabled]="!f.valid || isUploading">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+                    *ngIf="isUploading"></span> Upload
+            </button>
+        </div>
+    </form>
+</div>

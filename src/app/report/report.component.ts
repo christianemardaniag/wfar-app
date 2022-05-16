@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Academic } from '../model/academic.model';
+import { Report } from '../model/report.model';
+import { AcademicService } from '../services/academic.service';
+import { ReportService } from '../services/report.service';
 
 declare var jquery:any;
 declare var $ :any;
@@ -9,11 +13,23 @@ declare var $ :any;
   styleUrls: ['./report.component.css']
 })
 export class ReportComponent implements OnInit {
-
-  constructor() { }
+  report: Report[] = [];
+  academic: Academic[] = [];
+  
+  constructor(
+    private reportService: ReportService,
+    private academicService: AcademicService) { }
 
   ngOnInit(): void {
-    
+    this.fetchData();
   }
 
+  fetchData() {
+    this.reportService.getAllReport().subscribe(data => {
+      this.report = data;
+    })
+    this.academicService.getAllAcademic().subscribe(data => {
+      this.academic = data;
+    })
+  }
 }
