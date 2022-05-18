@@ -13,6 +13,7 @@ export class Report {
     activities: string = '';
     status: string = '';
     comments?: string = '';
+    handledBy: string = '';
     teamMeetScreenshot: string[] = [];
     providedActivities: string[] = [];
 }

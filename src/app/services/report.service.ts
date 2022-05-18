@@ -28,6 +28,22 @@ export class ReportService {
     }));
   }
 
+  getAllReportHandledByID(dhid:string) {
+    return this.http.get<any>(this.baseUrl + 'report.json').pipe(map(responseData => {
+      const report = [];
+      for (const key in responseData) {
+        if (responseData.hasOwnProperty(key)) {
+          const e = responseData[key];
+          
+          if (e.handledBy === dhid) {
+            report.push({ ...responseData[key], id: key });
+          }
+        }
+      }
+      return report;
+    }));
+  }
+
   getAllReportByUserId(userId: string) {
     return this.http.get<any>(this.baseUrl + 'report.json').pipe(map(responseData => {
       const report = [];

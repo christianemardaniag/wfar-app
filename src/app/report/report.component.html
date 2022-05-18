@@ -36,7 +36,7 @@
         <table id="reportTable" class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th>Faculty Name</th>
+                    <th style="min-width: 200px;">Employee Name</th>
                     <ng-container *ngFor="let a of academic">
                         <th style="font-size: 16px;" *ngFor="let x of a.weeks; let i = index">
                             <small class="d-block text-secondary">Remarks</small>
@@ -61,7 +61,7 @@
                                 </ng-template>
                             </td>
                             <ng-template #na>
-                                <td >N/A</td>
+                                <td class="text-secondary">N/A</td>
                             </ng-template>
                         </ng-container>
                     </ng-container>

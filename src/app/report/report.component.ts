@@ -25,9 +25,17 @@ export class ReportComponent implements OnInit {
   }
 
   fetchData() {
-    this.reportService.getAllReport().subscribe(data => {
-      this.report = data;
-    })
+    let pos = localStorage.getItem('position');
+    if(pos == 'department head') {
+      let id = localStorage.getItem('loggedId')!;
+      this.reportService.getAllReportHandledByID(id).subscribe(data => {
+        this.report = data;
+      })
+    } else {
+      this.reportService.getAllReport().subscribe(data => {
+        this.report = data;
+      })
+    }
     this.academicService.getAllAcademic().subscribe(data => {
       this.academic = data;
     })

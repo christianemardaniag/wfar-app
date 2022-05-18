@@ -86,7 +86,7 @@ export class ReportUploadComponent implements OnInit {
   }
 
   upload(f: NgForm) {
-    
+
     let val = f.form.value;
     let idWeek = val.week.split('::');
     let fname: string = '';
@@ -94,29 +94,29 @@ export class ReportUploadComponent implements OnInit {
       fname = data.lastName + ', ' + data.firstName + ' ' + data.middleName;
       this.report.userName = fname;
       console.log(fname);
-      
-    })
-    this.report.academicID = idWeek[0];
-    this.report.userID = this.loggedIn;
+      this.report.academicID = idWeek[0];
+      this.report.userID = this.loggedIn;
+      this.report.handledBy = data.handleById;
+      this.report.week = idWeek[1];
+      this.report.weekDays = this.datepipe.transform(this.weeks[idWeek[1] - 1].start, 'MMM d') + ' - ' + this.datepipe.transform(this.weeks[idWeek[1] - 1].end, 'MMM d');
+      this.report.submitDate = moment().format();
+      this.report.subject = val.subject;
+      this.report.cys = val.cys;
+      this.report.noOfAttendees = val.noOfAttendees;
+      this.report.link = val.link;
+      this.report.activities = val.activities;
+      this.report.status = 'for review';
+      this.report.teamMeetScreenshot = this.ts;
+      this.report.providedActivities = this.pa;
+      this.uploadFile(this.teamMeetScreenshot!, "teamMeetScreenshot");
+      this.uploadFile(this.providedActivities!, "providedActivities");
+      console.log(this.report);
+      this.reportService.uploadReport(this.report).subscribe(data => {
 
-    this.report.week = idWeek[1];
-    this.report.weekDays = this.datepipe.transform(this.weeks[idWeek[1]-1].start, 'MMM d') + ' - ' + this.datepipe.transform(this.weeks[idWeek[1] - 1].end, 'MMM d');
-    this.report.submitDate = moment().format();
-    this.report.subject = val.subject;
-    this.report.cys = val.cys;
-    this.report.noOfAttendees = val.noOfAttendees;
-    this.report.link = val.link;
-    this.report.activities = val.activities;
-    this.report.status = 'for review';
-    this.report.teamMeetScreenshot = this.ts;
-    this.report.providedActivities = this.pa;
-    this.uploadFile(this.teamMeetScreenshot!, "teamMeetScreenshot");
-    this.uploadFile(this.providedActivities!, "providedActivities");
-    console.log(this.report);
-    this.reportService.uploadReport(this.report).subscribe(data => {
-      
-      f.resetForm();
-    });
+        f.resetForm();
+      });
+    })
+
   }
 
   uploadFile(files: FileList, folder: string) {
