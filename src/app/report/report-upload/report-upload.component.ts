@@ -66,6 +66,7 @@ export class ReportUploadComponent implements OnInit {
   }
 
   teamMeetScreenshotOnChange(e: Event) {
+    this.ts = [];
     this.teamMeetScreenshot = (<HTMLInputElement>e.target).files;
     for (let i = 0; i < this.teamMeetScreenshot!.length; i++) {
       const element = this.teamMeetScreenshot?.item(i);
@@ -75,6 +76,7 @@ export class ReportUploadComponent implements OnInit {
   }
 
   providedActivitiesOnChange(e: Event) {
+    this.pa = [];
     this.providedActivities = (<HTMLInputElement>e.target).files;
     for (let i = 0; i < this.providedActivities!.length; i++) {
       const element = this.providedActivities?.item(i);

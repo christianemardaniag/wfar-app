@@ -53,7 +53,7 @@ export class UsersService {
           const e = responseData[key];
           if (e.status != 'archived' 
           && e.position === 'faculty'
-          && e.handleBy === handleBy) {
+          && e.handleById === handleBy) {
             users.push(responseData[key]);
           }
         }
@@ -85,7 +85,7 @@ export class UsersService {
           const e = responseData[key];
           if (e.status === 'for approval' 
             && e.position === 'faculty' 
-            && e.handleBy === handleBy) {
+            && e.handleById === handleBy) {
             users.push(responseData[key]);
           }
         }

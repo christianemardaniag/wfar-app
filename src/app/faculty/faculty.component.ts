@@ -27,6 +27,8 @@ export class FacultyComponent implements OnInit {
   fetchForApprovalFaculty() {
     console.log("FETCHING FACULTY FOR APPROVAL:");
     this.isFetchingForApprovalFaculty = true;
+    console.log(localStorage.getItem('position'));
+    
     if (localStorage.getItem('position') === 'department head') {
       let id = localStorage.getItem('loggedId')!;
       this.userService.getAllActiveFacultyHandleBy(id).subscribe(faculty => {
