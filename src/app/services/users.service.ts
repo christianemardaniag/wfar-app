@@ -84,7 +84,6 @@ export class UsersService {
         if (responseData.hasOwnProperty(key)) {
           const e = responseData[key];
           if (e.status === 'for approval' 
-            && e.position === 'faculty' 
             && e.handleById === handleBy) {
             users.push(responseData[key]);
           }

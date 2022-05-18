@@ -38,6 +38,7 @@ const routes: Routes = [
         { path: 'view/:id', component: ReportViewComponent }
       ]},
       { path: 'academic', component: AcademicComponent },
+      { path: 'profile', component: DashboardBodyComponent },
     ]
   },
   { path: 'user', component: UserDashboardComponent, children: [

@@ -17,9 +17,9 @@ declare var $: any;
   styleUrls: ['./dashboard-body.component.css']
 })
 export class DashboardBodyComponent implements OnInit, OnDestroy {
-  @Input() id: string = '';
+  // @Input() id: string = '';
   user: User = new User;
-  
+  id: any;
   departmentHeads: User[] = [];
   facultyHandledBy: User[] = [];
   file: FileUpload[] = [];
@@ -43,13 +43,18 @@ export class DashboardBodyComponent implements OnInit, OnDestroy {
 
     this.paramsSubscription = this.route.paramMap.subscribe(
       params => {
-        this.id = params.get('id')!;
-        if (this.id) {
-          this.isFetchingData = true;
+        this.id = params.get('id');
+        if (!this.id) {
+          this.id = localStorage.getItem('loggedId')!;
+        } 
+        this.isFetchingData = true;
           this.setSelectDepartmentHead(this.id);
           this.fetchUsers();
           this.fetchFacultyHandledBy();
-        }
+        console.log(localStorage.getItem('loggedId'));
+        
+        console.log(this.id);
+        
       }
     );
   }
