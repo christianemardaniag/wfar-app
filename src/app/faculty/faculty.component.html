@@ -1,5 +1,8 @@
 <div class="container-fluid"><br>
-    <h3><i class="far fa-user-alt me-2"></i>Faculty</h3>
+    <div class="d-flex justify-content-between">
+        <h3><i class="far fa-user-alt me-2"></i>Faculty</h3>
+        <button class="btn btn-secondary mb-3 d-print-none px-5 me-4" onclick="window.print()">Print</button>
+    </div>
     <hr>
     <div class="row g-2">
         <div class="col-4 d-print-none">
@@ -30,7 +33,6 @@
             
         </div>
         <div class="col">
-            <button class="btn btn-secondary mb-3 d-print-none px-3" onclick="window.print()">Print</button>
             <router-outlet [id]="id"></router-outlet>
         </div>
     </div>
