@@ -32,7 +32,8 @@ const routes: Routes = [
         ]
       },
       { path: 'department-head', component: DepartmentHeadComponent, children: [
-        { path: ':id', component: DashboardBodyComponent }
+        { path: ':id', component: DashboardBodyComponent },
+        { path: 'view/:id', component: ReportViewComponent }
       ]},
       { path: 'report', component: ReportComponent, children: [
         { path: '', redirectTo: 'table', pathMatch: "full" },
