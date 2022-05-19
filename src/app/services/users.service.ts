@@ -111,6 +111,21 @@ export class UsersService {
     return this.http.get<any>(this.baseUrl + 'users/'+id+'.json');
   }
 
+  getBlockedUsers() {
+    return this.http.get<any>(this.baseUrl + 'users.json').pipe(map(responseData => {
+      const users = [];
+      for (const key in responseData){
+        if (responseData.hasOwnProperty(key)) {
+          const e = responseData[key];
+          if (e.loginAttempt == 0) {
+            users.push(responseData[key]);
+          }
+        }
+      }
+      return users;
+    }));
+  }
+
   updateStatus(id: string, status: string, updateBy?: string){
     return this.http.patch(this.baseUrl + 'users/' + id +'.json', {
       status: status,

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AcademicComponent } from './academic/academic.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { BlockedComponent } from './blocked/blocked.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DepartmentHeadComponent } from './department-head/department-head.component';
 import { FacultyComponent } from './faculty/faculty.component';
@@ -42,6 +43,7 @@ const routes: Routes = [
         { path: 'view/:id', component: ReportViewComponent }
       ]},
       { path: 'academic', component: AcademicComponent },
+      { path: 'blocked', component: BlockedComponent },
       { path: 'profile/:id', component: DashboardBodyComponent },
     ]
   },

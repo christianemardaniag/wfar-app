@@ -12,16 +12,20 @@
             <div class="input-groups">
                 <div class="form-floating">
                     <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"
-                        ngModel required email>
+                        ngModel required email (focus)="closeAlert()">
                     <label for="email">Email address</label>
                 </div>
                 <div class="form-floating">
                     <input type="password" class="form-control" id="password" name="password" placeholder="Password"
-                        ngModel required>
+                        ngModel required (focus)="closeAlert()">
                     <label for="password">Password</label>
+                </div>
+                <div class="alert alert-danger my-2" *ngIf="isBlocked" role="alert">
+                    Your account has been currently <b>BLOCKED!</b>.
                 </div>
                 <div class="alert alert-danger my-2" *ngIf="isIncorrect" role="alert">
                     Incorrect Email or Password!
+                    <small class="d-block fw-bold" *ngIf="isAttempt">Login Attempt: {{attempt}}</small>
                 </div>
                 <!-- <button class="btn btn-link text-decoration-none mb-3" data-bs-toggle="modal"
                     data-bs-target="#forgot-password-modal" type="button">

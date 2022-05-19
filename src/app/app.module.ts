@@ -22,6 +22,7 @@ import { ReportBodyComponent } from './report/report-body/report-body.component'
 import { ReportViewComponent } from './report/report-view/report-view.component';
 import { ReportUploadComponent } from './report/report-upload/report-upload.component';
 import { ReportTableComponent } from './report/report-table/report-table.component';
+import { BlockedComponent } from './blocked/blocked.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ReportTableComponent } from './report/report-table/report-table.compone
     ReportBodyComponent,
     ReportViewComponent,
     ReportUploadComponent,
-    ReportTableComponent
+    ReportTableComponent,
+    BlockedComponent
   ],
   imports: [
     BrowserModule,

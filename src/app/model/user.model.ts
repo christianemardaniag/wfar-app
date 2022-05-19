@@ -12,4 +12,5 @@ export class User {
     handleById?: string = '';
     handleByName?: string = '';
     updateBy?: string = '';
+    loginAttempt: number = 3;
 }

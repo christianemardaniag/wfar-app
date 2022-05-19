@@ -1,0 +1,30 @@
+<div class="container-fluid"><br>
+    <h3><i class="fas fa-ban me-2"></i>Blocked Users </h3>
+    <hr>
+    <table class="table table-striped">
+        <caption *ngIf="users.length == 0">-- No blocked user --</caption>
+        <thead>
+            <tr>
+                <th>Employee No.</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact Number</th>
+                <th>Position</th>
+                <th>Department</th>
+                <th>Unblock</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let x of users">
+                <td>{{ x.employeeNo }}</td>
+                <td>{{ x.lastName + ', ' + x.firstName + ' ' + x.middleName }}</td>
+                <td>{{ x.email }}</td>
+                <td>{{ x.contactNumber }}</td>
+                <td>{{ x.position }}</td>
+                <td>{{ x.department }}</td>
+                <td><button type="button" class="btn btn-sm btn-success" (click)="unblocked(x.employeeNo)">Unblock</button></td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>

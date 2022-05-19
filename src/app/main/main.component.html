@@ -47,6 +47,12 @@
                             <span class="d-none d-lg-inline">Profile</span>
                         </a>
                     </li>
+                    <li *ngIf="!isDepartmentHead">
+                        <a routerLink="blocked" class="nav-link text-white" routerLinkActive="active">
+                            <i class="fas fa-ban bi me-2"></i>
+                            <span class="d-none d-lg-inline">Blocked Users</span>
+                        </a>
+                    </li>
                 </ul>
                 <hr>
                 <div class="dropdown">
