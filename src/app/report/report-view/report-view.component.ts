@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Report } from 'src/app/model/report.model';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { ReportService } from 'src/app/services/report.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-report-view',
@@ -17,10 +18,12 @@ export class ReportViewComponent implements OnInit {
   ts: string[] = [];
   pa: string[] = [];
   pos = localStorage.getItem('position');
+  userName = '';
 
   constructor(private reportService: ReportService,
     private fileService: FileUploadService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private userService: UsersService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(
@@ -49,6 +52,9 @@ export class ReportViewComponent implements OnInit {
           this.pa.push(await this.getUrl(name, 'providedActivities'));
         }
       }
+    })
+    this.userService.getUserById(this.id).subscribe(data => {
+      this.userName = data.lastName + ', ' + data.firstName + ' ' + data.middleName;
     })
   }
 

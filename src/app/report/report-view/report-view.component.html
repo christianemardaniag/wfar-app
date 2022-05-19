@@ -4,6 +4,7 @@
             <span class="visually-hidden">Loading...</span>
         </div>
     </div>
+    <h3>{{userName | titlecase}}</h3>
     <table class="table table-striped">
         <thead class="table-light">
             <tr>
@@ -13,9 +14,9 @@
                 <th>No. of Attendees</th>
                 <th>Link</th>
                 <th>Activities</th>
-                <th>Comments</th>
+                <!-- <th>Comments</th> -->
                 <th>Status</th>
-                <th *ngIf="pos != 'faculty'">Action</th>
+                <th class="d-print-none" *ngIf="pos != 'faculty'">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -25,11 +26,14 @@
                 <td>{{ r.subject | titlecase }}</td>
                 <td>{{ r.cys }}</td>
                 <td>{{ r.noOfAttendees }}</td>
-                <td><a [href]="r.link" target="_blank" class="btn btn-primary btn-sm">Go to Recording</a></td>
+                <td>
+                    <a [href]="r.link" target="_blank" class="btn btn-primary btn-sm d-print-none">Go to Recording</a>
+                    <span class="d-none d-print-block">{{r.link}}</span>
+                </td>
                 <td>{{ r.activities }}</td>
-                <td>{{ r.comments }}</td>
-                <td>{{ r.status }}</td>
-                <td *ngIf="pos != 'faculty'"><div class="dropdown">
+                <!-- <td>{{ r.comments }}</td> -->
+                <td>{{ r.status | titlecase}}</td>
+                <td class="d-print-none" *ngIf="pos != 'faculty'"><div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                       Action
                     </button>
