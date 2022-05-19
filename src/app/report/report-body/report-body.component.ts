@@ -6,6 +6,8 @@ import { AcademicService } from 'src/app/services/academic.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { ReportService } from 'src/app/services/report.service';
+import { UsersService } from 'src/app/services/users.service';
+import { User } from 'src/app/model/user.model';
 
 @Component({
   selector: 'app-report-body',
@@ -16,11 +18,12 @@ export class ReportBodyComponent implements OnInit {
   @Input() id: string = '';
 
   report: Report[] = [];
+  userStatus: string = '';
   paramsSubscription: Subscription = new Subscription;
   pos = localStorage.getItem('position');
   isReportFetching = false;
 
-  constructor(private route: ActivatedRoute, private academicService: AcademicService,
+  constructor(private route: ActivatedRoute, private userService: UsersService,
     private reportService: ReportService,
     private router: Router) { }
 
@@ -36,6 +39,9 @@ export class ReportBodyComponent implements OnInit {
       this.report = data;
       this.isReportFetching = false;
     })
+    this.userService.getUserById(this.id).subscribe(data => {
+      this.userStatus = data.status;
+    });
   }
 
   

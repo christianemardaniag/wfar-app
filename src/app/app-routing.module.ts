@@ -8,6 +8,7 @@ import { FacultyComponent } from './faculty/faculty.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { ReportTableComponent } from './report/report-table/report-table.component';
 import { ReportUploadComponent } from './report/report-upload/report-upload.component';
 import { ReportViewComponent } from './report/report-view/report-view.component';
 import { ReportComponent } from './report/report.component';
@@ -34,11 +35,13 @@ const routes: Routes = [
         { path: ':id', component: DashboardBodyComponent }
       ]},
       { path: 'report', component: ReportComponent, children: [
-        { path: 'upload/:id', component: DashboardBodyComponent },
+        { path: '', redirectTo: 'table', pathMatch: "full" },
+        { path: 'table', component: ReportTableComponent },
+        { path: 'upload/:id', component: ReportUploadComponent },
         { path: 'view/:id', component: ReportViewComponent }
       ]},
       { path: 'academic', component: AcademicComponent },
-      { path: 'profile', component: DashboardBodyComponent },
+      { path: 'profile/:id', component: DashboardBodyComponent },
     ]
   },
   { path: 'user', component: UserDashboardComponent, children: [

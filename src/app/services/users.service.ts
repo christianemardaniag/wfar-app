@@ -52,7 +52,6 @@ export class UsersService {
         if (responseData.hasOwnProperty(key)) {
           const e = responseData[key];
           if (e.status != 'archived' 
-          && e.position === 'faculty'
           && e.handleById === handleBy) {
             users.push(responseData[key]);
           }

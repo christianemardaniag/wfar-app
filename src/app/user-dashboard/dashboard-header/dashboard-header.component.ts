@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardHeaderComponent implements OnInit {
 
+  id = localStorage.getItem('loggedId');
   constructor() { }
 
   ngOnInit(): void {

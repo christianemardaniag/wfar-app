@@ -42,7 +42,7 @@
                         </a>
                     </li>
                     <li *ngIf="isDepartmentHead">
-                        <a routerLink="profile" class="nav-link text-white" routerLinkActive="active">
+                        <a [routerLink]="['profile',id]" class="nav-link text-white" routerLinkActive="active">
                             <i class="fas fa-user-alt bi me-2"></i>
                             <span class="d-none d-lg-inline">Profile</span>
                         </a>

@@ -1,11 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Academic } from '../model/academic.model';
-import { Report } from '../model/report.model';
-import { AcademicService } from '../services/academic.service';
-import { ReportService } from '../services/report.service';
-
-declare var jquery:any;
-declare var $ :any;
 
 @Component({
   selector: 'app-report',
@@ -13,31 +6,13 @@ declare var $ :any;
   styleUrls: ['./report.component.css']
 })
 export class ReportComponent implements OnInit {
-  report: Report[] = [];
-  academic: Academic[] = [];
+ 
+  id = localStorage.getItem('loggedId')!;
   
-  constructor(
-    private reportService: ReportService,
-    private academicService: AcademicService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.fetchData();
   }
 
-  fetchData() {
-    let pos = localStorage.getItem('position');
-    if(pos == 'department head') {
-      let id = localStorage.getItem('loggedId')!;
-      this.reportService.getAllReportHandledByID(id).subscribe(data => {
-        this.report = data;
-      })
-    } else {
-      this.reportService.getAllReport().subscribe(data => {
-        this.report = data;
-      })
-    }
-    this.academicService.getAllAcademic().subscribe(data => {
-      this.academic = data;
-    })
-  }
+  
 }

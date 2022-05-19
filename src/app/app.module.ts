@@ -21,6 +21,7 @@ import { DashboardBodyComponent } from './user-dashboard/dashboard-body/dashboar
 import { ReportBodyComponent } from './report/report-body/report-body.component';
 import { ReportViewComponent } from './report/report-view/report-view.component';
 import { ReportUploadComponent } from './report/report-upload/report-upload.component';
+import { ReportTableComponent } from './report/report-table/report-table.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ReportUploadComponent } from './report/report-upload/report-upload.comp
     DashboardBodyComponent,
     ReportBodyComponent,
     ReportViewComponent,
-    ReportUploadComponent
+    ReportUploadComponent,
+    ReportTableComponent
   ],
   imports: [
     BrowserModule,
