@@ -40,7 +40,7 @@
                         <button class="btn" (click)="isEditingMode=true"><i class="fas fa-edit" data-toggle="tooltip" data-placement="auto"
                                 title="Change Department Head"></i> Edit</button>
                     </div>
-                    <div *ngIf="position === 'faculty'">Handle by: <strong>{{ user.handleByName | titlecase }}</strong></div>
+                    <div *ngIf="position === 'faculty'">Handled by: <strong>{{ user.handleByName | titlecase }}</strong></div>
                     <div class="row mt-2" *ngIf="isEditingMode">
                         <div class="col">
                             <select class="form-select d-inline" name="handleBy" #dh ngModel>
