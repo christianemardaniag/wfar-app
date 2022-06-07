@@ -1,7 +1,7 @@
 <div class="container-fluid"><br>
     <div class="d-flex justify-content-between">
         <h3><i class="fal fa-paperclip me-2"></i>Report</h3>
-        <button class="btn btn-secondary" [routerLink]="['/main/report/upload',id]">Upload Report</button>
+        <button class="btn btn-secondary" [routerLink]="['/main/report/upload',id]" *ngIf="pos != 'admin'">Upload Report</button>
     </div>
     <hr>
     <router-outlet></router-outlet>

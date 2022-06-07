@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ReportComponent implements OnInit {
  
   id = localStorage.getItem('loggedId')!;
-  
+  pos = localStorage.getItem('position');
   constructor() { }
 
   ngOnInit(): void {
